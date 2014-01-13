@@ -1,0 +1,17 @@
+<inkscape-extension>
+    <_name>Spine Sorter</_name>
+    <id>com.bristowk.filter.spineSorter</id>
+    <dependency type="executable" location="extensions">inkex.py</dependency>
+    <dependency type="executable" location="extensions">simpletransform.py</dependency>
+    <param name="idRegex" type="string" _gui-text="ID Regex">g</param>
+	<param name="separationX" type="int" min="0" max="100000" _gui-text="Horizontal Separation (Sort)">10</param>
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu _name="Mine" />
+        </effects-menu>
+    </effect>
+    <script>
+        <command reldir="extensions" interpreter="python">spineSorter.py</command>
+    </script>
+</inkscape-extension>
