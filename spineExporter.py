@@ -31,7 +31,7 @@ class SpineExporter(inkex.Effect):
             if matchID:
                 exportFile = self.options.exportDir + "\\" + elementID + ".png"
                 
-                command = "inkscape -i \"{0}\" -e \"{1}\" \"{2}\" ".format(elementID, exportFile, svgFile)
+                command = "inkscape -i \"{0}\" -j -e \"{1}\" \"{2}\" ".format(elementID, exportFile, svgFile)
                 process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 process.wait()
         
