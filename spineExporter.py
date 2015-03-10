@@ -12,7 +12,7 @@ class SpineExporter(inkex.Effect):
         
         self.OptionParser.add_option('-r', '--idRegex', action='store', type='string', dest='idRegex', default='g', help='Regex to check ID against?')
         self.OptionParser.add_option('-e', '--exportDir', action='store', type='string', dest='exportDir', default="C:\\", help='Where should the images be exported?')
-        
+        self.OptionParser.add_option('-x', '--removePrefix', action='store', type='string', dest='removePrefix', default="g", help='Remove the given prefix?')
         
     def effect(self):
         self.exportNodes()
@@ -29,7 +29,14 @@ class SpineExporter(inkex.Effect):
             matchID = re.search(self.options.idRegex, elementID, re.I|re.M)            
             
             if matchID:
-                exportFile = self.options.exportDir + "\\" + elementID + ".png"
+		
+                # Remove prefix
+                exportNameID = elementID;
+                if self.options.removePrefix:
+                    if elementID.startswith(self.options.removePrefix):
+                        exportNameID = elementID[len(self.options.removePrefix):]
+
+                exportFile = self.options.exportDir + "/" + exportNameID + ".png"
                 
                 command = "inkscape -i \"{0}\" -j -e \"{1}\" \"{2}\" ".format(elementID, exportFile, svgFile)
                 process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

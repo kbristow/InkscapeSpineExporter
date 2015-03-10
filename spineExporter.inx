@@ -4,7 +4,8 @@
     <dependency type="executable" location="extensions">inkex.py</dependency>
     <dependency type="executable" location="extensions">simpletransform.py</dependency>
     <param name="idRegex" type="string" _gui-text="ID Regex">g</param>
-	<param name="exportDir" type="string" min="0" max="100000" _gui-text="Export Directory">C:\</param>
+    <param name="exportDir" type="string" min="0" max="100000" _gui-text="Export Directory">C:\</param>
+    <param name="removePrefix" type="string" min="0" max="100000" _gui-text="Remove prefix">g</param>
     <effect>
         <object-type>all</object-type>
         <effects-menu>
